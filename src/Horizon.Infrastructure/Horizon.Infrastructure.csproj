@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+    <ItemGroup>
+      <ProjectReference Include="..\Horizon.Domain\Horizon.Domain.csproj" />
+    </ItemGroup>
+    
+</Project>
