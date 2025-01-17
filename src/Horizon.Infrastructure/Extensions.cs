@@ -1,4 +1,6 @@
-﻿using Horizon.Infrastructure.Persistence;
+﻿using Horizon.Infrastructure.Logging;
+using Horizon.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,10 +8,25 @@ namespace Horizon.Infrastructure;
 
 public static class Extensions
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static WebApplicationBuilder AddInfrastructure(this WebApplicationBuilder builder)
     {
-        services.AddPersistence(configuration);
+        var configuration = builder.Configuration;
 
-        return services;
+        builder.Services.AddLogging();
+        builder.Host.UseLogging(configuration);
+        builder.Services.AddPersistence(configuration);
+
+        return builder;
+    }
+    
+    public static TOptions BindOptions<TOptions>(this IConfiguration configuration, string sectionName) where TOptions : class, new()
+        => BindOptions<TOptions>(configuration.GetSection(sectionName));
+    
+    private static TOptions BindOptions<TOptions>(this IConfiguration section) where TOptions : class, new()
+    {
+        var options = new TOptions();
+        section.Bind(options);
+
+        return options;
     }
 }

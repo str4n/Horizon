@@ -7,6 +7,9 @@
     <ItemGroup>
       <PackageReference Include="Dapper" />
       <PackageReference Include="Microsoft.Data.SqlClient" />
+      <PackageReference Include="Serilog" />
+      <PackageReference Include="Serilog.AspNetCore" />
+      <PackageReference Include="Serilog.Sinks.Console" />
     </ItemGroup>
     
 </Project>
