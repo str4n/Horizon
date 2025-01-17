@@ -1,0 +1,18 @@
+name: horizon-infrastructure
+
+services:
+    horizon-mssql:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: mssql
+        ports:
+            - "1433:1433"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=P@ssword1234 
+        volumes:
+            - sql_data:/var/opt/mssql
+        restart: unless-stopped 
+
+volumes:
+  sql_data:
+    driver: local

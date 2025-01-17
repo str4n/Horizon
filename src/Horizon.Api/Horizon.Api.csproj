@@ -9,6 +9,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <FrameworkReference Remove="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Include="..\..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>

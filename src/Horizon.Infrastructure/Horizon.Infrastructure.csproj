@@ -3,5 +3,10 @@
     <ItemGroup>
       <ProjectReference Include="..\Horizon.Domain\Horizon.Domain.csproj" />
     </ItemGroup>
+  
+    <ItemGroup>
+      <PackageReference Include="Dapper" />
+      <PackageReference Include="Microsoft.Data.SqlClient" />
+    </ItemGroup>
     
 </Project>
