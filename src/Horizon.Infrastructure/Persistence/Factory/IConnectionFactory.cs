@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 
-namespace Horizon.Infrastructure.Persistence;
+namespace Horizon.Infrastructure.Persistence.Factory;
 
 public interface IConnectionFactory
 {

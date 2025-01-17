@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Horizon.Infrastructure.Persistence.Factory;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Horizon.Infrastructure.Persistence;
@@ -10,11 +11,7 @@ internal static class Extensions
     {
         services.AddSingleton<IConnectionFactory>(_ =>
         {
-            var section = configuration.GetSection(SectionName);
-
-            var options = new DatabaseOptions();
-
-            section.Bind(options);
+            var options = configuration.BindOptions<DatabaseOptions>(SectionName);
 
             return new ConnectionFactory(options.ConnectionString);
         });
